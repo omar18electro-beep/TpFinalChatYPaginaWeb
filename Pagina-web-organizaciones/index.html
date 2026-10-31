@@ -1,22 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Terraform Cyberspace: desarrollo de páginas web e implementación de inteligencia artificial.">
+    <title>Terraform Cyberspace | IA y desarrollo web</title>
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
-    <h1>Empresa desarrolladora de inteligencia artificial, paginas web y implementacion de IA en paginas web <h1>
-    <h2>Somos Terraform Cyberspace, una empresa dedicada a crear soluciones digitales inteligentes. Desarrollamos páginas web modernas y funcionales, e implementamos sistemas de inteligencia artificial que potencian la experiencia del usuario y transforman ideas en plataformas innovadoras. <h2>
-    <button onclick="A()">¿Quienes somos?</button>
-    <button onclick="B()">Servicios</button>
-    <button onclick="C()">Contacto</button>
-    <button onclick="D()">Soporte</button>
-    <button onclick="E()">Noticias</button>
-    <img src="img/logo Terraform Cyberspace.png" alt="Foto">
-    <img src="img/fondoweb.png" alt="Foto">
-<body>
-<script src="app.js"></script>
+
+    <!-- ===== Encabezado ===== -->
+    <header class="site-header">
+        <a class="brand" href="#inicio">
+            <img src="img/logo Terraform Cyberspace.png" alt="Logo de Terraform Cyberspace">
+            <span>Terraform Cyberspace</span>
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Información de la empresa">
+            <button type="button" data-seccion="quienes">¿Quiénes somos?</button>
+            <button type="button" data-seccion="servicios">Servicios</button>
+            <button type="button" data-seccion="contacto">Contacto</button>
+            <button type="button" data-seccion="soporte">Soporte</button>
+            <button type="button" data-seccion="noticias">Noticias</button>
+        </nav>
+    </header>
+
+    <main id="inicio">
+
+        <!-- ===== Portada ===== -->
+        <section class="hero">
+            <h1>Empresa desarrolladora de inteligencia artificial, páginas web e implementación de IA en páginas web</h1>
+
+            <div class="panel" aria-live="polite">
+                <h2 id="panel-titulo">Terraform Cyberspace</h2>
+                <p id="panel-texto"></p>
+            </div>
+        </section>
+
+        <!-- ===== Qué hacemos ===== -->
+        <section class="cards" aria-label="Qué hacemos">
+            <article class="card">
+                <h3>Páginas web</h3>
+                <p>Sitios modernos, rápidos y fáciles de usar, pensados para empresas e instituciones.</p>
+            </article>
+            <article class="card">
+                <h3>Inteligencia artificial</h3>
+                <p>Sistemas de IA que potencian la experiencia del usuario y transforman ideas en plataformas innovadoras.</p>
+            </article>
+            <article class="card">
+                <h3>Chatbots</h3>
+                <p>Asistentes virtuales que responden consultas con la información de tu organización. Probá el chat en la esquina inferior derecha.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="anio"></span> Terraform Cyberspace · <a href="mailto:contacto@terraformcyberspace.com">contacto@terraformcyberspace.com</a></p>
+    </footer>
+
+    <!-- ===== Chat flotante ===== -->
+    <button type="button" id="chat-toggle" aria-label="Abrir chat" aria-expanded="false" aria-controls="chat-container">💬</button>
+
+    <section id="chat-container" aria-label="Chat con el asistente virtual">
+        <div id="chat-header">
+            <span>Asistente virtual</span>
+            <button type="button" id="chat-close" aria-label="Cerrar chat">✖</button>
+        </div>
+
+        <div id="chat-box" aria-live="polite">
+            <div class="message bot-message">¡Hola! Soy el asistente virtual. ¿En qué te puedo ayudar hoy?</div>
+        </div>
+
+        <form id="chat-form" autocomplete="off">
+            <input type="text" id="chat-input" placeholder="Escribí tu consulta…" maxlength="500" aria-label="Tu consulta" required>
+            <button type="submit" id="chat-send">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Librerías para mostrar las respuestas del bot (Markdown seguro) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+    <script src="app.js"></script>
+</body>
 </html>
