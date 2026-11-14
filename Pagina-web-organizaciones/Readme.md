@@ -1,6 +1,8 @@
 # Sitio web del Instituto (ISFDyT Nº 59)
 
-Sitio estático de un instituto de formación docente y técnica, hecho solo con HTML, CSS y JavaScript. No necesita instalar nada ni usar un framework.
+Sitio web de un instituto de formación docente y técnica, hecho solo con HTML, CSS y JavaScript. No necesita instalar nada ni usar un framework.
+
+Es un sitio **estático**: los archivos se entregan tal cual están, sin programa ni base de datos en el servidor. Todo lo que se mueve (menú, filtros, formulario) lo ejecuta JavaScript en el navegador del visitante. Por eso se puede publicar en cualquier servidor web, pero también significa que el contenido (carreras, fechas, novedades, menú) se edita en los archivos, no desde un panel.
 
 ## Estructura
 
@@ -8,11 +10,13 @@ Sitio estático de un instituto de formación docente y técnica, hecho solo con
 .
 ├── index.html      # Estructura y contenido de la página
 ├── style.css       # Estilos y diseño responsive
-├── script.js       # Datos, filtros, menú y formulario
+├── script.js       # Datos (carreras, fechas, novedades, menú), filtros y formulario
 ├── README.md
 └── img/
-    ├── logo.svg    # Logo (provisorio)
-    └── favicon.svg # Ícono de la pestaña del navegador
+    ├── logo.jpg        # Logo que se ve en la barra superior
+    ├── instituto.jpg   # Imagen de fondo de la portada
+    ├── fondoweb.png    # Fondo disponible (todavía sin usar)
+    └── favicon.svg     # Ícono de la pestaña del navegador
 ```
 
 ## Cómo verlo
@@ -29,7 +33,7 @@ Después abrí `http://localhost:8000`.
 
 ## Qué incluye
 
-- Barra superior fija, con menú desplegable en celular.
+- Barra superior fija, con menú de secciones y submenús generado desde `script.js`, y versión desplegable en celular.
 - Portada con una pizarra de próximas fechas.
 - Listado de carreras con filtro (todas, docentes, técnicas).
 - Pasos de inscripción.
@@ -51,13 +55,15 @@ El campo `tipo` debe ser `"docente"` o `"tecnica"` para que funcione el filtro.
 
 **Colores:** están como variables al inicio de `style.css`, dentro de `:root`.
 
-**Logo:** reemplazá `img/logo.svg` por el del instituto. Si es PNG o JPG, cambiá la ruta en `index.html`:
+**Logo:** reemplazá `img/logo.jpg` por el del instituto (si cambia la extensión, actualizá la ruta en `index.html`):
 
 ```html
-<img class="brand-mark" src="img/logo.png" alt="" width="42" height="42">
+<img class="brand-mark" src="img/logo.jpg" alt="" width="42" height="42">
 ```
 
 Hacé lo mismo con `img/favicon.svg` y la línea `<link rel="icon">`.
+
+**Imagen de portada:** se define en `style.css`, en la regla `.hero`, con `url("img/instituto.jpg")`. Para cambiarla, poné otro archivo en `img/` y actualizá esa ruta. Conviene una foto sin texto y de menos de 300 KB.
 
 ## Menú y submenús
 
