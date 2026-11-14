@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba del chat-widget</title>
+    <style>
+        /* Estilos "agresivos" a propósito, como los de muchos temas de WordPress,
+           para comprobar que no afectan al chat. */
+        body { font-family: Georgia, serif; margin: 0; padding: 40px; background: #fafaf5; color: #333; }
+        button { background: crimson !important; color: yellow !important; border-radius: 0 !important; }
+        input { border: 3px dashed purple !important; }
+        p, div, span, a, ul, li { letter-spacing: 3px; }
+    </style>
+</head>
+<body>
+    <h1>Página de prueba de la institución</h1>
+    <p>Esta página simula el sitio de una institución. El chat aparece abajo a la derecha.</p>
+    <p><button type="button" onclick="IsfdytChat.abrir()">Abrir el chat desde un botón de la página</button></p>
+
+    <!--
+      Esta es la única línea que necesita la página de la institución.
+      Con el backend corriendo en tu PC: http://127.0.0.1:8000
+      Con el backend publicado:           https://chat.tu-dominio.com.ar
+    -->
+    <script src="http://127.0.0.1:8000/chat-widget.js" defer></script>
+</body>
+</html>

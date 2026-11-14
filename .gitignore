@@ -1,19 +1,6 @@
-# Secretos
+# Secretos y archivos generados: no se suben a Git
 .env
-.env.*
-!.env.example
-
-# Python
 .venv/
-venv/
 __pycache__/
 *.pyc
-
-# Logs
-*.log
-
-# Editor / sistema
-.vscode/
-.idea/
-Thumbs.db
-.DS_Store
+consultas.txt
