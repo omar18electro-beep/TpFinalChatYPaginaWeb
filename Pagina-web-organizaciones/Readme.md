@@ -105,4 +105,4 @@ server {
 ## Notas
 
 - Los datos de carreras, fechas, novedades y contacto son de **ejemplo**; hay que reemplazarlos por los reales.
-- Las tipografías (Source Sans 3 y Source Serif 4) se cargan desde Google Fonts. Sin conexión, el sitio usa fuentes del sistema.
+- El sitio usa las tipografías del sistema (no carga nada desde Google), así que abre rápido y funciona sin internet.
