@@ -1,1 +1,19 @@
+# Secretos
 .env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Editor / sistema
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

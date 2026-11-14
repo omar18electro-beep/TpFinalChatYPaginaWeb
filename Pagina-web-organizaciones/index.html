@@ -1,22 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="Style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instituto Superior de Formación Docente y Técnica Nº 59</title>
+  <meta name="description" content="Carreras docentes y técnicas, inscripción y novedades del Instituto Superior Nº 59.">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Empresa desarrolladora de inteligencia artificial, paginas web y implementacion de IA en paginas web <h1>
-    <h2>Somos Terraform Cyberspace, una empresa dedicada a crear soluciones digitales inteligentes. Desarrollamos páginas web modernas y funcionales, e implementamos sistemas de inteligencia artificial que potencian la experiencia del usuario y transforman ideas en plataformas innovadoras. <h2>
-    <button onclick="A()">¿Quienes somos?</button>
-    <button onclick="B()">Servicios</button>
-    <button onclick="C()">Contacto</button>
-    <button onclick="D()">Soporte</button>
-    <button onclick="E()">Noticias</button>
-    <img src="img/logo Terraform Cyberspace.png" alt="Foto">
-    <img src="img/fondoweb.png" alt="Foto">
-<body>
-<script src="app.js"></script>
+  <a class="skip" href="#contenido">Ir al contenido</a>
+
+  <header class="topbar">
+    <div class="wrap bar">
+      <a class="brand" href="#inicio">
+        <img class="brand-mark" src="img/logo.jpg" alt="" width="42" height="42">
+        <span class="brand-text">ISFDyT Nº 59<small>Formación docente y técnica</small></span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menú</button>
+      <nav id="nav" class="nav" aria-label="Principal"></nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>Estudiá una carrera con salida laboral, cerca de casa.</h1>
+          <p class="lead">Profesorados y tecnicaturas de nivel superior, públicas y gratuitas. Cursada presencial con acompañamiento de docentes y tutores.</p>
+          <div class="actions">
+            <a class="btn primary" href="#inscripcion">Quiero inscribirme</a>
+            <a class="btn" href="#carreras">Ver carreras</a>
+          </div>
+        </div>
+        <aside class="board" aria-label="Próximas fechas">
+          <h2>Próximas fechas</h2>
+          <ul id="fechas"></ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="carreras">
+      <div class="wrap">
+        <h2>Carreras</h2>
+        <p class="sub">Filtrá por tipo de formación.</p>
+        <div class="tabs" role="group" aria-label="Filtrar carreras">
+          <button class="tab active" data-filtro="todas" aria-pressed="true">Todas</button>
+          <button class="tab" data-filtro="docente" aria-pressed="false">Docentes</button>
+          <button class="tab" data-filtro="tecnica" aria-pressed="false">Técnicas</button>
+        </div>
+        <div class="grid" id="listaCarreras"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="inscripcion">
+      <div class="wrap steps-wrap">
+        <div>
+          <h2>Cómo inscribirte</h2>
+          <p class="sub">Tres pasos y listo. Si te falta algún papel, podés completarlo después en Secretaría.</p>
+        </div>
+        <ol class="steps">
+          <li><strong>Elegí la carrera.</strong> Revisá el plan de estudios y los horarios de cursada.</li>
+          <li><strong>Completá la preinscripción.</strong> Con tus datos personales y de contacto.</li>
+          <li><strong>Presentá la documentación.</strong> DNI, título secundario o constancia en trámite, y foto.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="novedades">
+      <div class="wrap">
+        <h2>Novedades</h2>
+        <div class="news" id="listaNovedades"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="contacto">
+      <div class="wrap contact">
+        <div>
+          <h2>Contacto</h2>
+          <p class="sub">Escribinos y te respondemos en horario de Secretaría.</p>
+          <p class="data">
+            <strong>Dirección:</strong> Martínez Ituño 213, Localidad Gral. J. Madariaga, CP 7163<br>
+            <strong>Teléfono:</strong> 02267 420175<br>
+            <strong>Email:</strong> isfdyt59@yahoo.com.ar<br>
+            <strong>Horario:</strong> lunes a viernes, 18 a 22 h
+          </p>
+        </div>
+        <form id="form" novalidate>
+          <label for="nombre">Nombre y apellido</label>
+          <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+          <p class="error" data-for="nombre"></p>
+
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+          <p class="error" data-for="email"></p>
+
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+          <p class="error" data-for="mensaje"></p>
+
+          <button class="btn primary" type="submit">Enviar mensaje</button>
+          <p class="ok" id="ok" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>© <span id="anio"></span> Instituto Superior de Formación Docente y Técnica N° 59 (Dr. Carlos Madariaga).</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
