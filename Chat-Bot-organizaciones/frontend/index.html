@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISFDyT N° 59</title>
+    <style>
+        /* VARIABLES PARA EL MODO CLARO/OSCURO */
+        :root {
+            --bg-chat: #e5ddd5;
+            --bg-header: #003b73;
+            --text-header: white;
+            --bg-messages: transparent;
+            --bg-bot: #ffffff;
+            --text-bot: #303030;
+            --bg-user: #dcf8c6;
+            --text-user: #111b21;
+            --bg-input: #ffffff;
+            --bg-botones-panel: #f2f2f2;
+            --bg-btn: #ffffff;
+            --text-btn: #003b73;
+            --link-color: #0275d8;
+        }
+
+        .dark-mode {
+            --bg-chat: #1e1e1e;
+            --bg-header: #112233;
+            --text-header: #e0e0e0;
+            --bg-messages: #121212;
+            --bg-bot: #2d2d2d;
+            --text-bot: #e0e0e0;
+            --bg-user: #005c4b;
+            --text-user: #ffffff;
+            --bg-input: #1e1e1e;
+            --bg-botones-panel: #121212;
+            --bg-btn: #2d2d2d;
+            --text-btn: #4da3ff;
+            --link-color: #66b2ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: transparent;
+            margin: 0;
+        }
+
+        /* VENTANA DE CHAT AMPLIADA */
+        .chat-container {
+            width: 400px;
+            max-width: 95vw;
+            height: 88vh;
+            max-height: calc(100dvh - 30px);
+            background: var(--bg-chat);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            position: fixed;
+            bottom: 15px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+            transition: background 0.3s;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        .chat-container.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .chat-header {
+            background: var(--bg-header);
+            color: var(--text-header);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            transition: background 0.3s;
+            flex-shrink: 0;
+        }
+
+        .chat-header span {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: 4px;
+        }
+
+        .chat-header button {
+            background: none;
+            border: none;
+            color: var(--text-header);
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            padding: 4px 6px;
+        }
+
+        .chat-header button:hover {
+            transform: scale(1.2);
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: var(--bg-messages);
+            transition: background 0.3s;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .mensaje {
+            max-width: 85%;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.35;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .mensaje p {
+            margin: 4px 0;
+        }
+
+        .mensaje.bot {
+            background: var(--bg-bot);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            color: var(--text-bot);
+        }
+
+        .mensaje.usuario {
+            background: var(--bg-user);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+            color: var(--text-user);
+        }
+
+        .escribiendo-texto {
+            font-style: italic;
+            opacity: 0.85;
+            animation: parpadeoSuave 1.5s infinite ease-in-out;
+        }
+
+        @keyframes parpadeoSuave {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        .chat-link {
+            color: var(--link-color);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 2px;
+            word-break: break-all;
+        }
+
+        .chat-link:hover {
+            text-decoration: underline;
+            filter: brightness(0.8);
+        }
+
+        .botones-sugeridos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 8px 10px;
+            background-color: var(--bg-botones-panel);
+            justify-content: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+            flex-shrink: 0;
+        }
+
+        .botones-sugeridos button {
+            background-color: var(--bg-btn);
+            border: 1px solid var(--text-btn);
+            border-radius: 20px;
+            padding: 6px 11px;
+            font-size: 12px;
+            cursor: pointer;
+            color: var(--text-btn);
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s;
+        }
+
+        .botones-sugeridos button:hover {
+            background-color: var(--text-btn);
+            color: var(--bg-btn);
+            transform: translateY(-2px);
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px 12px;
+            background: var(--bg-input);
+            z-index: 10;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+            flex-shrink: 0;
+        }
+
+        .btn-mic {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px;
+            transition: 0.2s;
+            filter: grayscale(100%);
+            flex-shrink: 0;
+        }
+
+        .btn-mic:hover {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .btn-mic.grabando {
+            filter: grayscale(0%);
+            animation: pulse 1s infinite;
+        }
+
+        .chat-input input {
+            flex: 1;
+            min-width: 0;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+            background-color: var(--bg-btn);
+            color: var(--text-bot);
+            transition: border 0.3s, background 0.3s;
+        }
+
+        .chat-input input:focus {
+            border: 1px solid var(--text-btn);
+        }
+
+        .chat-input button.enviar-btn {
+            background: #003b73;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .chat-input button.enviar-btn:hover {
+            background: #002244;
+            transform: scale(1.05);
+        }
+
+        /* BOTÓN FLOTANTE CON EL LOGO */
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 25px;
+            background: none;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .chat-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* ADAPTACIÓN PARA CELULARES */
+        @media (max-width: 480px) {
+            .chat-container {
+                width: 100vw;
+                max-width: 100vw;
+                height: 100dvh;
+                max-height: 100dvh;
+                bottom: 0;
+                right: 0;
+                border-radius: 0;
+            }
+
+            .chat-header {
+                padding: 10px 14px;
+            }
+
+            .chat-header span {
+                font-size: 15px;
+            }
+
+            .botones-sugeridos {
+                padding: 6px 8px;
+                gap: 5px;
+            }
+
+            .botones-sugeridos button {
+                padding: 5px 9px;
+                font-size: 11.5px;
+            }
+
+            .chat-input {
+                padding: 8px 10px;
+                gap: 6px;
+            }
+
+            .chat-input button.enviar-btn {
+                padding: 9px 14px;
+                font-size: 13px;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+
+    <div class="chat-icon" id="chatbot-toggle" onclick="toggleChat()" aria-label="Abrir a Carlitos">
+        <img src="robot.png" alt="ISFDyT 59">
+    </div>
+
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header">
+            <span>ISFDyT N° 59</span>
+            <div class="header-buttons">
+                <button onclick="toggleTheme()" title="Modo Oscuro" id="btn-theme">🌙</button>
+                <button onclick="limpiarChat()" title="Limpiar conversación">🗑️</button>
+                <button onclick="toggleChat()" title="Cerrar">✖</button>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chat-messages"></div>
+
+        <div class="botones-sugeridos">
+            <button onclick="responderFrecuente('carreras')">📚 Carreras</button>
+            <button onclick="responderFrecuente('inscripciones')">📅 Inscripciones</button>
+            <button onclick="responderFrecuente('constancia')">📝 Constancia</button>
+            <button onclick="responderFrecuente('horarios')">⏰ Horarios</button>
+            <button onclick="responderFrecuente('contactos')">📞 Contactos</button>
+        </div>
+
+        <div class="chat-input">
+            <button id="btn-mic" class="btn-mic" onclick="iniciarDictado()" title="Hablar por micrófono">🎤</button>
+            <input type="text" id="user-input" placeholder="Escribe tu consulta..." onkeypress="handleKeyPress(event)"
+                autocomplete="off">
+            <button class="enviar-btn" onclick="enviarMensaje()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        const mensajeBienvenida = '¡Hola! 🤖 Soy **Carlitos**, del ISFDyT Nº 59. Estoy acá para ayudarte con las carreras, inscripciones y dudas sobre el instituto. ¿Qué te gustaría consultar hoy?';
+        let chatIniciado = false;
+        let historialChat = [];
+        let temporizadorInactividad = null;
+        let recordatorioEnviado = false;
+        const TIEMPO_INACTIVIDAD_MS = 120000;
+
+        const preguntasFrecuentes = {
+            'carreras': { pregunta: '¿Cuáles son las carreras disponibles?', respuesta: 'Ofrecemos Profesorados (Educación Primaria, Educación Especial e Inglés) y Tecnicaturas (Análisis de Sistemas, Enfermería, Acompañamiento Terapéutico, Trabajo Social, Bibliotecología, entre otras). Podés ver el listado completo en nuestra web: https://isfdyt59-bue.infd.edu.ar/sitio/oferta-academica-2/' },
+            'inscripciones': { pregunta: '¿Cuándo son las fechas de inscripción?', respuesta: 'Las inscripciones para el ciclo 2027 comenzarán a partir de fines noviembre a través de SIU Guaraní. Cada carrera tiene un cupo máximo de 50 personas.' },
+            'constancia': { pregunta: '¿Cómo pido la constancia de alumno regular?', respuesta: 'Debés llevar el certificado impreso o fotocopiado y entregarlo en Preceptoría durante el horario de atención: de lunes a viernes de 13:00 a 22:00 hs.' },
+            'horarios': { pregunta: '¿Cuáles son los horarios de cursada?', respuesta: 'Las grillas con los horarios detallados de cada materia y carrera están publicadas en nuestra carpeta oficial. Podés acceder desde este enlace: https://drive.google.com/drive/folders/1bgBLM-QDQ6GRH5PkFtyrFnyRXuHlvWMr' },
+            'contactos': { pregunta: '¿Cuáles son los medios de contacto?', respuesta: 'Podés visitarnos en Martínez Ituño 213, llamarnos al 02267 420175, o escribir a isfdyt59@yahoo.com.ar.' }
+        };
+
+        function reiniciarTemporizadorInactividad() {
+            clearTimeout(temporizadorInactividad);
+            const chatContainer = document.getElementById('chat-container');
+            if (!chatContainer.classList.contains('show') || recordatorioEnviado || historialChat.length === 0) return;
+
+            temporizadorInactividad = setTimeout(() => {
+                if (chatContainer.classList.contains('show') && !recordatorioEnviado && historialChat.length > 0) {
+                    agregarMensaje('¿Necesitás ayuda con algo más? 😊', 'bot', true);
+                    recordatorioEnviado = true;
+                }
+            }, TIEMPO_INACTIVIDAD_MS);
+        }
+
+        function toggleTheme() {
+            const container = document.getElementById('chat-container');
+            const btnTheme = document.getElementById('btn-theme');
+            container.classList.toggle('dark-mode');
+            btnTheme.textContent = container.classList.contains('dark-mode') ? '☀️' : '🌙';
+        }
+
+        function toggleChat() {
+            const chatContainer = document.getElementById('chat-container');
+            const toggleBtn = document.getElementById('chatbot-toggle');
+
+            chatContainer.classList.toggle('show');
+
+            if (chatContainer.classList.contains('show')) {
+                toggleBtn.style.display = 'none';
+
+                if (!chatIniciado) {
+                    mostrarEscribiendo();
+                    setTimeout(() => {
+                        ocultarEscribiendo();
+                        agregarMensaje(mensajeBienvenida, 'bot');
+                    }, 1200);
+                    chatIniciado = true;
+                } else {
+                    reiniciarTemporizadorInactividad();
+                }
+            } else {
+                toggleBtn.style.display = 'flex';
+                clearTimeout(temporizadorInactividad);
+            }
+        }
+
+        function limpiarChat() {
+            clearTimeout(temporizadorInactividad);
+            const messagesDiv = document.getElementById('chat-messages');
+            messagesDiv.innerHTML = '';
+            historialChat = [];
+            recordatorioEnviado = false;
+            agregarMensaje(mensajeBienvenida, 'bot');
+        }
+
+        function agregarMensaje(texto, remitente, esRecordatorio = false) {
+            const messagesDiv = document.getElementById('chat-messages');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'mensaje ' + remitente;
+            
+            let htmlTexto = marked.parse(texto);
+
+            htmlTexto = htmlTexto.replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,})/g, function(email) {
+                return '<a href="mailto:' + email + '" class="chat-link">' + email + '</a>';
+            });
+            htmlTexto = htmlTexto.replace(/(02267[\s-]?420175)/g, function(tel) {
+                const num = tel.replace(/[\s-]/g, '');
+                return '<a href="tel:' + num + '" class="chat-link">' + tel + '</a>';
+            });
+
+            msgDiv.innerHTML = htmlTexto;
+            
+            msgDiv.querySelectorAll('a').forEach(a => {
+                a.className = 'chat-link';
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+            });
+
+            messagesDiv.appendChild(msgDiv);
+            messagesDiv.scrollTo({ top: messagesDiv.scrollHeight, behavior: 'smooth' });
+
+            if (remitente === 'usuario') {
+                recordatorioEnviado = false;
+            }
+            if (!esRecordatorio) {
+                reiniciarTemporizadorInactividad();
+            }
+        }
+
+        function iniciarDictado() {
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.lang = 'es-AR';
+                recognition.continuous = false;
+                const btnMic = document.getElementById('btn-mic');
+
+                recognition.onstart = function () {
+                    btnMic.classList.add('grabando');
+                    document.getElementById('user-input').placeholder = "Escuchando...";
+                };
+
+                recognition.onresult = function (event) {
+                    const textoHablado = event.results[0][0].transcript;
+                    document.getElementById('user-input').value = textoHablado;
+                    enviarMensaje();
+                };
+
+                recognition.onend = function () {
+                    btnMic.classList.remove('grabando');
+                    document.getElementById('user-input').placeholder = "Escribe tu consulta...";
+                };
+
+                recognition.start();
+            } else {
+                alert("Tu navegador no soporta la entrada por voz.");
+            }
+        }
+
+        function mostrarEscribiendo() {
+            clearTimeout(temporizadorInactividad);
+            const messagesDiv = document.getElementById('chat-messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'indicador-escribiendo';
+            typingDiv.className = 'mensaje bot escribiendo-texto';
+            typingDiv.textContent = 'Carlitos está escribiendo...';
+            messagesDiv.appendChild(typingDiv);
+            messagesDiv.scrollTo({ top: messagesDiv.scrollHeight, behavior: 'smooth' });
+        }
+
+        function ocultarEscribiendo() {
+            const typingDiv = document.getElementById('indicador-escribiendo');
+            if (typingDiv) typingDiv.remove();
+        }
+
+        function responderFrecuente(idTema) {
+            const item = preguntasFrecuentes[idTema];
+            agregarMensaje(item.pregunta, 'usuario');
+            historialChat.push({ role: "user", content: item.pregunta });
+            historialChat.push({ role: "assistant", content: item.respuesta });
+
+            mostrarEscribiendo();
+            setTimeout(() => {
+                ocultarEscribiendo();
+                agregarMensaje(item.respuesta, 'bot');
+            }, 800);
+        }
+
+        async function enviarMensaje() {
+            const input = document.getElementById('user-input');
+            const texto = input.value.trim();
+            if (!texto) return;
+
+            agregarMensaje(texto, 'usuario');
+            input.value = '';
+
+            historialChat.push({ role: "user", content: texto });
+            mostrarEscribiendo();
+
+            try {
+                const response = await fetch('https://chatbot-backend-azwa.onrender.com/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ historial: historialChat })
+                });
+
+                if (!response.ok) throw new Error('Error de red');
+
+                const data = await response.json();
+                historialChat.push({ role: "assistant", content: data.response });
+
+                ocultarEscribiendo();
+                agregarMensaje(data.response, 'bot');
+
+            } catch (error) {
+                ocultarEscribiendo();
+                agregarMensaje('Error al conectar con el servidor.', 'bot');
+                historialChat.pop();
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                enviarMensaje();
+            }
+        }
+    </script>
+</body>
+
+</html>
+
