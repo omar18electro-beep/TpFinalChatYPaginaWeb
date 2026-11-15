@@ -1,0 +1,151 @@
+=== HORARIOS DETALLADOS POR MATERIA Y CARRERA 2026 - ISFDyT N° 59 ===
+Enlace general a las grillas oficiales en Drive: https://drive.google.com/drive/folders/1bgBLM-QDQ6GRH5PkFtyrFnyRXuHlvWMr
+
+1. TECNICATURA SUPERIOR EN ANÁLISIS DE SISTEMAS (Res. 6790/19)
+- 1° Año:
+  * Análisis Matemático I: Martes 13:00 a 15:00 hs.
+  * Arquitectura de Computadores: Martes 13:00 a 15:00 hs.
+  * Prácticas Profesionalizantes I: Miércoles 13:00 a 15:00 hs.
+  * Sistemas y Organizaciones: Jueves 13:00 a 15:00 hs.
+  * Álgebra: Lunes 15:00 a 17:00 hs.
+  * Algoritmos y Estructura de Datos I: Martes 15:00 a 17:00 hs / Jueves 15:00 a 17:00 hs.
+  * Ciencia, Tecnología y Sociedad: Miércoles 15:00 a 17:00 hs.
+  * Inglés I: Viernes 15:00 a 17:00 hs.
+- 2° Año:
+  * Prácticas Profesionalizantes II: Lunes 13:00 a 15:00 hs / Martes 13:00 a 15:00 hs.
+  * Algoritmos y Estructura de Datos II: Miércoles 13:00 a 17:00 hs.
+  * Base de Datos: Jueves 13:00 a 15:00 hs.
+  * Estadística: Viernes 13:00 a 15:00 hs.
+  * Inglés Técnico II: Martes 15:00 a 17:00 hs.
+  * Sistemas Operativos: Miércoles 15:00 a 17:00 hs.
+  * Ingeniería de Software I: Jueves 15:00 a 17:00 hs.
+  * Análisis Matemático II: Viernes 15:00 a 17:00 hs.
+
+2. TECNICATURA SUPERIOR EN ENFERMERÍA (Res. 854/16)
+- 1° Año:
+  * Condiciones y Medio Ambiente de Trabajo: Lunes 13:00 a 15:00 hs.
+  * Fundamentos del Cuidado: Lunes 15:00 a 17:00 hs.
+  * Cuidados Centrados en la Comunidad y la Familia: Martes 13:00 a 15:00 hs.
+  * Biología Humana: Martes 15:00 a 17:00 hs / Miércoles 13:00 a 15:00 hs.
+  * Salud Pública I: Jueves 13:00 a 17:00 hs.
+  * Práctica Profesionalizante I: Viernes 13:00 a 19:00 hs (con tramos en campo).
+- 2° Año:
+  * Práctica Profesionalizante II: Lunes 13:00 a 17:00 hs.
+  * Inglés: Martes 12:00 a 13:00 hs.
+  * Nutrición y Dietoterapia: Martes 13:00 a 15:00 hs.
+  * Enfermería del Adulto y Adulto Mayor I: Martes 15:00 a 17:00 hs / Viernes 13:00 a 15:00 hs.
+  * Comunicación en Salud: Miércoles 13:00 a 15:00 hs.
+  * Práctica Profesionalizante II (Campo): Miércoles 15:00 a 17:00 hs.
+  * Metodología de la Investigación: Jueves 13:00 a 15:00 hs.
+  * Farmacología en Enfermería: Jueves 15:00 a 17:00 hs.
+  * Salud Pública II: Viernes 15:00 a 17:00 hs.
+  * Enfermería Materno Infantil: Martes 17:00 a 19:00 hs.
+- 3° Año:
+  * Práctica Profesionalizante III: Lunes 17:00 a 22:00 hs / Jueves 17:00 a 22:00 hs.
+  * Enfermería Comunitaria y Práctica Educativa en Salud: Martes 17:00 a 19:00 hs.
+  * Aspectos Bioéticos: Martes 19:00 a 20:00 hs.
+  * Enfermería en Salud Mental: Martes 20:00 a 22:00 hs.
+  * Enfermería del Adulto y Adulto Mayor II: Miércoles 17:00 a 19:00 hs.
+  * Urgencias: Miércoles 19:00 a 21:00 hs.
+  * Enfermería en Emergencias y Catástrofes: Viernes 17:00 a 22:00 hs.
+
+3. TECNICATURA SUPERIOR EN TRABAJO SOCIAL (Res. 1666/06)
+- 1° Año:
+  * Metodología de la Investigación I: Lunes 13:00 a 15:00 hs.
+  * Conocimiento Institucional: Lunes 15:00 a 17:00 hs.
+  * Filosofía: Martes 13:00 a 15:00 hs.
+  * E.D.I. (Género): Martes 15:00 a 17:00 hs.
+  * Historia y Fundamentos del Trabajo Social: Miércoles 13:00 a 15:00 hs.
+  * Sociología I: Miércoles 15:00 a 17:00 hs.
+  * Derecho: Jueves 13:00 a 15:00 hs.
+  * Práctica Profesional I: Jueves 15:00 a 17:00 hs.
+  * Psicología: Viernes 13:00 a 17:00 hs.
+- 2° Año:
+  * Trabajo Social I: Lunes 13:00 a 15:00 hs.
+  * Derecho Penal y Régimen Penitenciario: Lunes 15:00 a 17:00 hs.
+  * E.D.I. (Asimetrías): Lunes 16:00 a 17:00 hs.
+  * Derecho de Familia: Martes 13:00 a 15:00 hs.
+  * Epistemología: Martes 15:00 a 17:00 hs.
+  * Psicología Social: Miércoles 13:00 a 15:00 hs.
+  * Metodología de la Investigación II: Miércoles 15:00 a 17:00 hs.
+  * Trabajo Social II: Jueves 13:00 a 17:00 hs.
+  * Práctica Profesional II: Jueves 15:00 a 17:00 hs.
+  * Sociología II: Viernes 13:00 a 15:00 hs.
+- 3° Año:
+  * Inglés: Lunes 13:00 a 15:00 hs.
+  * Salud Pública: Lunes 15:00 a 17:00 hs.
+  * Antropología: Martes 13:00 a 15:00 hs.
+  * Trabajo Social III: Martes 15:00 a 17:00 hs.
+  * Historia Social y Política: Miércoles 13:00 a 15:00 hs.
+  * E.D.I. (El rol del trabajador social): Miércoles 15:00 a 17:00 hs.
+  * Práctica Profesionalizante III: Jueves 13:00 a 17:00 hs.
+  * Planificación y Administración: Viernes 13:00 a 15:00 hs.
+  * Derecho Laboral: Viernes 15:00 a 17:00 hs.
+- 4° Año:
+  * Economía Social: Lunes 13:00 a 15:00 hs.
+  * Política Social: Lunes 15:00 a 17:00 hs.
+  * Trabajo Final de Investigación: Martes 13:00 a 15:00 hs.
+  * E.D.I. (Problemáticas sociales contemporáneas): Martes 15:00 a 17:00 hs.
+  * Práctica Profesional IV: Miércoles 13:00 a 17:00 hs.
+  * Salud Mental: Viernes 13:00 a 17:00 hs.
+  * Inglés II: Viernes 15:00 a 17:00 hs.
+
+4. TECNICATURA SUPERIOR EN ACOMPAÑAMIENTO TERAPÉUTICO (Res. 1221/15)
+- Materias principales:
+  * Modalidades de Intervención del Acompañante Terapéutico: Lunes 13:00 a 17:00 hs.
+  * Contextualización del Campo Profesional: Martes 13:00 a 16:00 hs.
+  * Principios Médicos y de Psicofarmacología: Miércoles 13:00 a 15:00 hs.
+  * Psicología de los Ciclos Vitales: Miércoles 15:00 a 17:00 hs.
+  * Salud Pública y Salud Mental: Jueves 13:00 a 15:00 hs.
+  * Fundamentos de Psicología General y de Intervención Sociocomunitaria: Viernes 13:00 a 16:00 hs.
+  * Práctica Profesionalizante: Jueves 16:00 a 18:00 hs.
+  * Psicopatología: Viernes 16:00 a 18:00 hs.
+
+5. TECNICATURA SUPERIOR EN BIBLIOTECOLOGÍA (RM 5497/23)
+- 2° y 3° Año:
+  * Formación de Usuarias/os: Lunes 18:00 a 20:00 hs.
+  * Práctica Profesional I: Lunes 20:00 a 22:00 hs.
+  * Administración y Gestión de Bibliotecas 3: Martes 18:00 a 20:00 hs.
+  * Metodología de la Investigación en Unidades de Información: Martes 20:00 a 22:00 hs.
+  * Tecnologías de Procesos y Servicios en Bibliotecas 2: Miércoles 18:00 a 20:00 hs.
+  * Análisis y Descripción Documental: Miércoles 20:00 a 22:00 hs.
+  * Metodología de la Investigación / Prácticas Profesionales: Jueves 18:00 a 20:00 hs.
+  * Desarrollo de Colecciones: Jueves 20:00 a 22:00 hs.
+  * Políticas de Información y Comunicación III: Viernes 18:00 a 20:00 hs.
+  * Inglés: Viernes 20:00 a 22:00 hs.
+
+6. TECNICATURA EN PRODUCCIÓN AGRÍCOLA GANADERA (Res. 4343/19)
+- 1° Año:
+  * Matemática: Lunes 18:00 a 22:00 hs.
+  * Práctica Profesionalizante I: Martes 18:00 a 19:00 hs / Miércoles 20:00 a 22:00 hs.
+  * Anatomía y Fisiología Animal: Martes 19:00 a 22:00 hs.
+  * Física Aplicada: Miércoles 18:00 a 20:00 hs.
+  * Introducción a las Ciencias Agrarias: Jueves 18:00 a 22:00 hs.
+  * Química Agrícola: Viernes 18:00 a 20:00 hs.
+  * Sistemática Aplicada: Viernes 20:00 a 22:00 hs.
+
+7. PROFESORADO DE INGLÉS (Res. 1860/17)
+- 2°, 3° y 4° Año (Franja vespertina y nocturna de 16:00 a 22:00 hs):
+  * Prácticas Discursivas de la Comunicación Oral y Escrita (II, III y IV): Lunes a Viernes en turnos rotativos vespertinos.
+  * Pedagogía / Didáctica y Currículum / Sujetos de la Educación: Clases asignadas de martes a jueves de 17:00 a 21:00 hs.
+  * Espacios de la Práctica Profesional (CFPP II, III y IV): Lunes y viernes en horarios específicos de campo y ateneos.
+
+8. PROFESORADO DE EDUCACIÓN ESPECIAL (Res. 1009/09)
+- 2° y 3° Año:
+  * Didáctica de la Matemática 2: Lunes 17:00 a 19:00 hs.
+  * Didáctica del Lenguaje: Lunes 19:00 a 22:00 hs.
+  * Didáctica y Currículum: Martes 17:00 a 19:00 hs.
+  * Neurociencias: Martes 19:00 a 22:00 hs.
+  * Práctica Docente II y III: Miércoles 17:00 a 19:00 hs y 19:00 a 21:00 hs.
+  * Didáctica de las Ciencias Naturales II: Miércoles 17:00 a 19:00 hs.
+  * Teorías Sociopolíticas y Educación: Jueves 17:00 a 19:00 hs / Viernes 17:00 a 19:00 hs.
+  * Sujeto con Discapacidad Intelectual: Jueves 17:00 a 21:00 hs.
+  * Psicología del Desarrollo y Aprendizaje II: Viernes 19:00 a 22:00 hs.
+
+9. PROFESORADO DE EDUCACIÓN PRIMARIA / INICIAL (Res. 4154/07)
+- 1°, 2°, 3° y 4° Año:
+  * Psicología del Desarrollo y el Aprendizaje: Lunes 13:00 a 15:00 hs.
+  * Práctica Docente (I, II, III y IV): Lunes y martes por la tarde (franjas de 13:00 a 18:00 hs según año).
+  * Didácticas Específicas (Matemática, Prácticas del Lenguaje, Cs. Naturales, Cs. Sociales): Lunes a Viernes de 13:00 a 17:00 hs.
+  * Historia y Prospectiva de la Educación / Políticas Educativas: Miércoles y Jueves de 13:00 a 17:00 hs.
+  * Ateneos de 4° Año (Matemática, Prácticas del Lenguaje, Naturales y Sociales): Viernes de 17:00 a 22:00 hs.
