@@ -9,6 +9,8 @@
  *   data-api          URL del endpoint /chat. Por defecto: /chat en el mismo servidor que sirve este archivo.
  *   data-title        Título de la ventana (por defecto "ISFDyT N° 59").
  *   data-bot-name     Nombre del asistente (por defecto "Carlitos").
+ *   data-user-name    Cómo se muestra a quien escribe (por defecto "Vos").
+ *   data-names        "off" para ocultar el nombre que aparece arriba de cada mensaje.
  *   data-welcome      Primer mensaje del asistente (admite **negrita** y enlaces).
  *   data-placeholder  Texto del campo de escritura.
  *   data-notice       Aviso bajo el campo de escritura ("" para ocultarlo).
@@ -119,6 +121,8 @@
         api: datos.api || urlDelServidor('/chat'),
         titulo: datos.title || 'ISFDyT N° 59',
         nombreBot: datos.botName || 'Carlitos',
+        nombreUsuario: datos.userName || 'Vos',
+        mostrarNombres: datos.names !== 'off',
         bienvenida: datos.welcome || '¡Hola! 🤖 Soy **Carlitos**, del ISFDyT Nº 59. Estoy acá para ayudarte con las carreras, inscripciones y dudas sobre el instituto. ¿Qué te gustaría consultar hoy?',
         placeholder: datos.placeholder || 'Escribe tu consulta...',
         aviso: datos.notice !== undefined
@@ -181,7 +185,12 @@
         '.mensajes { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 12px; overflow-y: auto; background: var(--bg-messages); transition: background .3s; }',
         '.mensaje { max-width: 85%; padding: 6px 12px; font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; border-radius: 10px; box-shadow: 0 1px 2px rgba(0,0,0,.15); transition: background .3s, color .3s; }',
         '.mensaje.bot { align-self: flex-start; color: var(--text-bot); background: var(--bg-bot); border-bottom-left-radius: 4px; }',
-        '.mensaje.usuario { align-self: flex-end; color: var(--text-user); background: var(--bg-user); border-bottom-right-radius: 4px; white-space: pre-wrap; }',
+        '.mensaje.usuario { align-self: flex-end; color: var(--text-user); background: var(--bg-user); border-bottom-right-radius: 4px; }',
+        '.mensaje.usuario .texto { white-space: pre-wrap; }',
+        '.remitente { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; font-size: 11.5px; font-weight: 700; letter-spacing: .2px; }',
+        '.mensaje.bot .remitente { color: var(--text-btn); }',
+        '.mensaje.usuario .remitente { justify-content: flex-end; color: var(--text-user); opacity: .65; }',
+        '.avatar-mini { flex-shrink: 0; width: 22px; height: 22px; object-fit: contain; background: #ffffff; border: 1px solid rgba(0,0,0,.15); border-radius: 50%; }',
         '.mensaje p { margin: 4px 0; }',
         '.mensaje ul, .mensaje ol { margin: 4px 0; padding-left: 20px; }',
         '.mensaje code { padding: 1px 4px; font-family: ui-monospace, Consolas, monospace; font-size: 13px; background: rgba(127,127,127,.2); border-radius: 4px; }',
@@ -469,13 +478,40 @@
         }
 
         /* ---- Mensajes ---- */
+        // Nombre (y foto del robot) que aparece arriba de cada mensaje
+        function crearEtiqueta(rol) {
+            var etiqueta = document.createElement('div');
+            etiqueta.className = 'remitente';
+            if (rol !== 'user' && CONFIG.avatar) {
+                var foto = document.createElement('img');
+                foto.className = 'avatar-mini';
+                foto.alt = '';
+                foto.src = CONFIG.avatar;
+                foto.addEventListener('error', function () { foto.remove(); });
+                etiqueta.append(foto);
+            }
+            var nombre = document.createElement('span');
+            nombre.className = 'nombre';
+            nombre.textContent = rol === 'user' ? CONFIG.nombreUsuario : CONFIG.nombreBot;
+            etiqueta.append(nombre);
+            return etiqueta;
+        }
+
         function agregarMensaje(contenido, rol, opciones) {
             opciones = opciones || {};
             var burbuja = document.createElement('div');
             burbuja.className = 'mensaje ' + (rol === 'user' ? 'usuario' : 'bot');
 
-            if (rol === 'user' || opciones.plano) burbuja.textContent = contenido;
-            else renderMarkdown(contenido, burbuja);
+            if (CONFIG.mostrarNombres) burbuja.append(crearEtiqueta(rol));
+
+            if (rol === 'user' || opciones.plano) {
+                var texto = document.createElement('div');
+                texto.className = 'texto';
+                texto.textContent = contenido;
+                burbuja.append(texto);
+            } else {
+                renderMarkdown(contenido, burbuja);
+            }
 
             mensajes.append(burbuja);
             bajar();
@@ -681,4 +717,3 @@
         iniciar();
     }
 })();
-
